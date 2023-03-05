@@ -1,0 +1,14 @@
+function login(frm,ajx_lnk,mdl,mdl_txt,redirct){
+            frm.addEventListener("submit", (e)=>{
+                e.preventDefault()
+                mdl.innerHTML=mdl_txt
+                mdl.classList.add("hide-modal")
+                let form_data = new FormData(frm)
+                fetch(ajx_lnk, {method:"POST",body:form_data})
+                .then(res=>res.text())
+                .then((res)=>{
+                    alert(res)
+                    window.location.href=redirct
+                })
+            })
+}
